@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+
+</head>
+<body>
+     <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top" style="background-image: url('./assets/images/footer-illustration.png')">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="" class="logo">CLEAR REFLECTION<span class="span">.</span></a>
+
+          <p class="footer-text">
+            Financial experts support or help you to to find out which way you can raise your funds more.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Contact Info</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">+1 (062) 109-9222</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Info@YourGmail24.com</p>
+          </li>
+
+          <li>
+            <address class="footer-list-item">153 Williamson Plaza, Maggieberg, MT 09514</address>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Opening Hours</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Saturday: 10:00-16:00</p>
+          </li>
+
+        </ul>
+
+        
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright-text">
+          &copy; 2025 <a href="#" class="copyright-link">codewithsadee</a> All Rights Reserved.
+        </p>
+      </div>
+    </div>
+
+  </footer>
+  <script>
+    'use strict';
+
+
+
+/**
+ * navbar toggle
+ */
+
+const navbar = document.querySelector("[data-navbar]");
+const navbarLinks = document.querySelectorAll("[data-nav-link]");
+const menuToggleBtn = document.querySelector("[data-menu-toggle-btn]");
+
+menuToggleBtn.addEventListener("click", function () {
+  navbar.classList.toggle("active");
+  this.classList.toggle("active");
+});
+
+for (let i = 0; i < navbarLinks.length; i++) {
+  navbarLinks[i].addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    menuToggleBtn.classList.toggle("active");
+  });
+}
+
+
+
+/**
+ * header sticky & back to top
+ */
+
+const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= 100) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+});
+
+
+
+/**
+ * search box toggle
+ */
+
+const searchBtn = document.querySelector("[data-search-btn]");
+const searchContainer = document.querySelector("[data-search-container]");
+const searchSubmitBtn = document.querySelector("[data-search-submit-btn]");
+const searchCloseBtn = document.querySelector("[data-search-close-btn]");
+
+const searchBoxElems = [searchBtn, searchSubmitBtn, searchCloseBtn];
+
+for (let i = 0; i < searchBoxElems.length; i++) {
+  searchBoxElems[i].addEventListener("click", function () {
+    searchContainer.classList.toggle("active");
+    document.body.classList.toggle("active");
+  });
+}
+
+
+
+/**
+ * move cycle on scroll
+ */
+
+const deliveryBoy = document.querySelector("[data-delivery-boy]");
+
+let deliveryBoyMove = -80;
+let lastScrollPos = 0;
+
+window.addEventListener("scroll", function () {
+
+  let deliveryBoyTopPos = deliveryBoy.getBoundingClientRect().top;
+
+  if (deliveryBoyTopPos < 500 && deliveryBoyTopPos > -250) {
+    let activeScrollPos = window.scrollY;
+
+    if (lastScrollPos < activeScrollPos) {
+      deliveryBoyMove += 1;
+    } else {
+      deliveryBoyMove -= 1;
+    }
+
+    lastScrollPos = activeScrollPos;
+    deliveryBoy.style.transform = `translateX(${deliveryBoyMove}px)`;
+  }
+
+});
+  </script>
+</body>
+</html>
